@@ -50,20 +50,6 @@ namespace WebApplication.Controllers
 
             }
         }
-
-        [HttpPost]
-        public IActionResult Deleted(FormCollection formCollection)
-        {
-            string[] IDs = formCollection["studentId"];
-            foreach(string ID in IDs)
-            {
-                var stud = _Db.tbl_Student.Find(int.Parse(ID));
-                _Db.tbl_Student.Remove(stud);
-                _Db.SaveChanges();
-                
-            }
-            return RedirectToAction("StudentList");
-        } 
     
     
         public IActionResult Create(Student obj)
@@ -124,9 +110,7 @@ namespace WebApplication.Controllers
             {
                 return RedirectToAction("StudentList");
             }
-        }
-
-       
+        }       
 
         private void loadDDL()
         {
